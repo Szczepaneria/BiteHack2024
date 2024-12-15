@@ -26,7 +26,6 @@ func drawSelection(start: Vector2i, end: Vector2i) -> void:
 	clear()
 	set_cells_terrain_connect(selectionTiles, 0, 0, false)
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
@@ -40,7 +39,6 @@ var isInputLockerNext: bool
 func _process(_delta: float) -> void:
 	currentPosition = local_to_map(get_local_mouse_position())
 	lastPosition = currentPosition;
-	#if(currentPosition != lastPosition && !isInputLocked): print(currentPosition)
 	if Input.is_action_just_pressed("ui_focus_next") && !isInputLocked:
 		isInputLocked = true
 		isInputLockerNext = true
