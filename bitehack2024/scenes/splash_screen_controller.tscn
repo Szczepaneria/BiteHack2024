@@ -32,11 +32,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sn40r")
 load_scene = ExtResource("2_eofb4")
-in_time = 0.25
-fade_in_time = 0.5
-pause_time = 0.75
-fade_out_time = 0.75
-out_time = 0.25
+in_time = 0.1
+fade_in_time = 0.25
+pause_time = 0.5
+fade_out_time = 0.25
+out_time = 0.1
 
 [node name="3PM" type="TextureRect" parent="SplashScreenContainer"]
 layout_mode = 2
