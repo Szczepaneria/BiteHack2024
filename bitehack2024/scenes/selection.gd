@@ -3,7 +3,7 @@ extends TileMapLayer
 var start: Vector2i
 var end: Vector2i
 
-func drawSelection(start: Vector2i, end: Vector2i) -> void:
+func _drawSelection(start: Vector2i, end: Vector2i) -> void:
 	var selectionTiles: Array[Vector2i] = []
 	var x0: int = start.x
 	var y0: int = start.y
@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_focus_next") && isInputLocked:
 		if isInputLockerNext:
 			isInputLocked = false # Move stack up released: currentPosition
-			drawSelection(startPosition, lastPosition)
+			_drawSelection(startPosition, lastPosition)
 		else:
 			isInputLocked = false # Operation canceled!"
 	if Input.is_action_just_pressed("ui_focus_prev") && !isInputLocked:
@@ -56,6 +56,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_focus_prev") && isInputLocked:
 		if !isInputLockerNext:
 			isInputLocked = false # Move stack down released: currentPosition
-			drawSelection(startPosition, lastPosition)
+			_drawSelection(startPosition, lastPosition)
 		else:
 			isInputLocked = false # Operation canceled!"
