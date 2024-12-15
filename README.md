@@ -1,2 +1,2 @@
 # BiteHack2024
- Projekt XD
+ Projekt na BiteHack (tak naprawde 2025)
