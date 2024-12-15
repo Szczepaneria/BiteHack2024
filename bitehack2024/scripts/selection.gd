@@ -2,6 +2,7 @@ extends TileMapLayer
 
 var start: Vector2i
 var end: Vector2i
+var debug: bool = false;
 
 @onready var tile_map_layer: TileMapLayer = $"../TileMapLayer"
 @onready var tile_map_layer_2: TileMapLayer = $"../TileMapLayer2"
@@ -45,9 +46,9 @@ func _drawSelection(start: Vector2i, end: Vector2i) -> void:
 		selectionTiles = getSelectedTiles(x0, y0, x1, y1)
 		clear()
 		set_cells_terrain_connect(selectionTiles, 0, 0, false)
-		print("Area selected properly: both sizes are correct.\n")
+		if debug: print("Area selected properly: both sizes are correct.\n")
 	else:
-		print("Area not selected: one of the sizes is smaller than 2 on the grid.\n")
+		if debug: print("Area not selected: one of the sizes is smaller than 2 on the grid.\n")
 
 func _ready() -> void:
 	pass
