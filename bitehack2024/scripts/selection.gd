@@ -7,6 +7,13 @@ var end: Vector2i
 @onready var tile_map_layer_2: TileMapLayer = $"../TileMapLayer2"
 @onready var tile_map_layer_3: TileMapLayer = $"../TileMapLayer3"
 
+func getSelectedTiles(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
+	var result: Array[Vector2i] = []
+	for row in range(x0, x1):
+		for col in range(y0, y1): # filling cell row,col
+			result.append(Vector2i(row, col))
+	return result
+
 func _drawSelection(start: Vector2i, end: Vector2i) -> void:
 	var selectionTiles: Array[Vector2i] = []
 	var x0: int = start.x
@@ -24,9 +31,7 @@ func _drawSelection(start: Vector2i, end: Vector2i) -> void:
 		y1 = swap
 	 # Drawing rect from x0, y0 to x1, y1
 	
-	for row in range(x0, x1):
-		for col in range(y0, y1): # filling cell row,col
-			selectionTiles.append(Vector2i(row, col))
+	selectionTiles = getSelectedTiles(x0, y0, x1, y1)
 	clear()
 	set_cells_terrain_connect(selectionTiles, 0, 0, false)
 
