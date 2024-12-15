@@ -12,7 +12,7 @@ var splash_screens: Array
 func get_fade_out_time() -> float:
 	return fade_out_time
 
-func get_splash_screens() -> void:
+func setup_splash_screens() -> void:
 	splash_screens = self.get_children()
 	for screen in splash_screens: screen.modulate.a = 0.0
 
@@ -31,5 +31,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed(): get_tree().change_scene_to_packed(load_scene)
 
 func _ready():
-	get_splash_screens()
+	setup_splash_screens()
 	fade()
