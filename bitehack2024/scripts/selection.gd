@@ -3,6 +3,10 @@ extends TileMapLayer
 var start: Vector2i
 var end: Vector2i
 
+@onready var tile_map_layer: TileMapLayer = $"../TileMapLayer"
+@onready var tile_map_layer_2: TileMapLayer = $"../TileMapLayer2"
+@onready var tile_map_layer_3: TileMapLayer = $"../TileMapLayer3"
+
 func _drawSelection(start: Vector2i, end: Vector2i) -> void:
 	var selectionTiles: Array[Vector2i] = []
 	var x0: int = start.x

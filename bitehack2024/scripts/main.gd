@@ -1,9 +1,5 @@
 extends Node
 
-@onready var tl1: TileMapLayer = $TileMapLayer
-@onready var tl2: TileMapLayer = $TileMapLayer2
-@onready var tl3: TileMapLayer = $TileMapLayer3
-
 func _ready() -> void:
 	var window = get_window()
 	window.move_to_center()
