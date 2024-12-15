@@ -14,26 +14,40 @@ func getSelectedTiles(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
 			result.append(Vector2i(row, col))
 	return result
 
+var offset: int = 0;
+
 func _drawSelection(start: Vector2i, end: Vector2i) -> void:
 	var selectionTiles: Array[Vector2i] = []
 	var x0: int = start.x
 	var y0: int = start.y
 	var x1: int = end.x
 	var y1: int = end.y
+	var size_x: int;
+	var size_y: int;
 	
 	if x0 > x1:
 		var swap = x0
 		x0 = x1
 		x1 = swap
+		
 	if y0 > y1:
+		size_y = y0 - y1;
 		var swap = y0
 		y0 = y1
 		y1 = swap
-	 # Drawing rect from x0, y0 to x1, y1
 	
-	selectionTiles = getSelectedTiles(x0, y0, x1, y1)
-	clear()
-	set_cells_terrain_connect(selectionTiles, 0, 0, false)
+	var x_len = x1 - x0;
+	var y_len = y1 - y0;
+	
+	# check if too small for drawing
+	if (x_len >= 2 + offset) and (y_len >= 2 + offset):
+		 # Drawing rect from x0, y0 to x1, y1
+		selectionTiles = getSelectedTiles(x0, y0, x1, y1)
+		clear()
+		set_cells_terrain_connect(selectionTiles, 0, 0, false)
+		print("Area selected properly: both sizes are correct.\n")
+	else:
+		print("Area not selected: one of the sizes is smaller than 2 on the grid.\n")
 
 func _ready() -> void:
 	pass
