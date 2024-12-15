@@ -51,9 +51,12 @@ func shift(tiles_coords: Array[Vector2i], shift_to_next: bool = true):
 
 func get_selected_tiles_coords(x0: int, y0: int, x1: int, y1: int) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
+	print("ranges: x: ", x0, "-", x1, " = ", abs(x0-x1), "; y: ", y0, "-", y1, " = ", abs(y0-y1), " ::: ", abs(y0-y1)*abs(x0-x1))
 	for row in range(x0, x1):
 		for col in range(y0, y1): # filling cell row,col
 			result.append(Vector2i(row, col))
+	print("final")
+	print(result)
 	return result
 
 func normalize(start: Vector2i, end: Vector2i) -> Vector4i:
@@ -72,7 +75,7 @@ func normalize(start: Vector2i, end: Vector2i) -> Vector4i:
 		y1 = swap
 	return Vector4i(x0, y0, x1, y1)
 
-func _drawSelection(start: Vector2i, end: Vector2i) -> void:
+func drawSelection(start: Vector2i, end: Vector2i) -> void:
 	var selectionTiles: Array[Vector2i] = []
 	var normalized: Vector4i = normalize(start, end)
 	var x0: int = normalized.x
@@ -105,13 +108,13 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_focus_next") && isInputLocked:
 		if isInputLockerNext:
 			isInputLocked = false # Move stack up released: currentPosition
-			_drawSelection(startPosition, lastPosition)
+			drawSelection(startPosition, lastPosition)
 			var flat: Vector4i = normalize(startPosition, endPosition)
 			var a: int = flat.x
 			var b: int = flat.y
 			var c: int = flat.z
 			var d: int = flat.w
-			shift(get_selected_tiles_coords(startPosition.x, lastPosition.y, lastPosition.x, lastPosition.y))
+			shift(get_selected_tiles_coords(startPosition.x, startPosition.y, lastPosition.x, lastPosition.y))
 		else:
 			isInputLocked = false # Operation canceled!"
 	if Input.is_action_just_pressed("ui_focus_prev") && !isInputLocked:
@@ -121,7 +124,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_focus_prev") && isInputLocked:
 		if !isInputLockerNext:
 			isInputLocked = false # Move stack down released: currentPosition
-			_drawSelection(startPosition, lastPosition)
+			drawSelection(startPosition, lastPosition)
 			shift(get_selected_tiles_coords(startPosition.x, startPosition.y, lastPosition.x, endPosition.y), false)
 		else:
 			isInputLocked = false # Operation canceled!"
