@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://7ckxv1rdte6c"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_ijloo"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_ijloo"]
 [ext_resource type="Texture2D" uid="uid://b5dlxc4igaqaw" path="res://assets/placeholder/Terrain (16x16).png" id="2_v86ye"]
 [ext_resource type="Texture2D" uid="uid://dnycltbh8qrvj" path="res://assets/ui/frame.png" id="3_bs0l0"]
-[ext_resource type="Script" path="res://scenes/selection.gd" id="4_3wdew"]
+[ext_resource type="Script" path="res://scripts/selection.gd" id="4_3wdew"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wrk4"]
 texture = ExtResource("2_v86ye")
