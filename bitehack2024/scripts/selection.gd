@@ -121,9 +121,9 @@ func _process(_delta: float) -> void:
 			var b: int = flat.y
 			var c: int = flat.z
 			var d: int = flat.w
-			print(startPosition)
-			print(get_selected_tiles_coords(startPosition.x, lastPosition.y, lastPosition.x, lastPosition.y))
-			shift(get_selected_tiles_coords(startPosition.x, lastPosition.y, lastPosition.x, lastPosition.y))
+			#print(startPosition)
+			#print(get_selected_tiles_coords(startPosition.x, lastPosition.y, lastPosition.x, lastPosition.y))
+			#shift(get_selected_tiles_coords(startPosition.x, lastPosition.y, lastPosition.x, lastPosition.y))
 		else:
 			isInputLocked = false # Operation canceled!"
 	if Input.is_action_just_pressed("ui_focus_prev") && !isInputLocked:
@@ -134,6 +134,6 @@ func _process(_delta: float) -> void:
 		if !isInputLockerNext:
 			isInputLocked = false # Move stack down released: currentPosition
 			_drawSelection(startPosition, lastPosition)
-			shift(get_selected_tiles_coords(startPosition.x, startPosition.y, lastPosition.x, endPosition.y), false)
+			#shift(get_selected_tiles_coords(startPosition.x, startPosition.y, lastPosition.x, endPosition.y), false)
 		else:
 			isInputLocked = false # Operation canceled!"
